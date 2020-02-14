@@ -15,6 +15,21 @@
     4. the ability to edit an existing task
 
     */
+
+    $ (document).ready (function () {
+      $('#add').click(function (){
+        var text = $('#task').val();
+        $('#todo-list').append(`<li>` + `${text}`+ `<input id="checkbox" type="checkbox" name="checkbox">` + `<button id="x-button" type='button' name='button'>x</button>` + `</li>`);
+        $('#task').val('');
+      });
+      $(document).on("click", "#x-button", function() {
+        $(this).parent('li').remove();
+      });
+      $(document).on("click", "#checkbox", function (){
+        $(this).parent('li').css('text-decoration', 'line-through');
+      });
+    });
+    
     </script>
     <style>
     #wrapper {
@@ -25,6 +40,7 @@
     #description, #search, #todo-list {
       font-size: 1.5em;
     }
+
     </style>
   </head>
   <body>
